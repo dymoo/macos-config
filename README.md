@@ -2,24 +2,24 @@
 Dylan's MacOS config.
 
 ## MacOS modifications
-Unidentified developer warning
+* Disables unidentified developer warning
 
 ## Installs
-ungoogled-chromium (Chromium based browser for privacy)
-visual-studio-code
-mysqlworkbench
-spotify
+* eloston-chromium (ungoogled-chromium, Chromium based browser for privacy)
+* visual-studio-code
+* mysqlworkbench
+* spotify
 
-node
-n (node version manager)
-yarn
-go
-docker
-oh-my-zsh
+* node
+* n (node version manager)
+* yarn
+* go
+* docker
+* oh-my-zsh
 
 ## Configures
-oh-my-zsh
-common terminal aliases
+* oh-my-zsh
+* common terminal aliases
 
 # How to run?
 paste
