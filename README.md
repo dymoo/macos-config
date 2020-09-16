@@ -1,5 +1,29 @@
 # macos-config
-Config for my mac setup.
+Dylan's MacOS config.
 
-run this script by pasting
+## MacOS modifications
+Unidentified developer warning
+
+## Installs
+ungoogled-chromium (Chromium based browser for privacy)
+visual-studio-code
+mysqlworkbench
+spotify
+
+node
+n (node version manager)
+yarn
+go
+docker
+oh-my-zsh
+
+## Configures
+oh-my-zsh
+common terminal aliases
+
+# How to run?
+paste
+
 `sh -c "$(curl -fsSL https://raw.githubusercontent.com/dymoo/macos-config/master/run.sh)"`
+
+into your terminal.
