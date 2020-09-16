@@ -9,7 +9,6 @@ Dylan's MacOS config.
 * visual-studio-code
 * mysqlworkbench
 * spotify
-
 * node
 * n (node version manager)
 * yarn
@@ -18,8 +17,9 @@ Dylan's MacOS config.
 * oh-my-zsh
 
 ## Configures
-* oh-my-zsh
-* common terminal aliases
+* oh-my-zsh (apple theme)
+* Sets common terminal aliases
+* Generates ssh key for Github
 
 # How to run?
 paste
