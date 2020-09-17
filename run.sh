@@ -1,40 +1,69 @@
 #!/bin/sh
+# Read the README.md
 
-echo "Setting up MacOS (Dylan's config)"
+log() {
+    red=`tput setaf 1`
+    green=`tput setaf 2`
+    reset=`tput sgr0`
+    
+    if [ -z "$2" ]; then
+        echo "${green}[info] ${1}${reset}"
+    else
+        echo "${red}[error] ${1}${reset}"
+    fi
+}
 
-echo "Disabling unidentified developer warning"
-sudo spctl --master-disable
-
-echo "Installing brew package manager"
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-
-echo "Installing brew packages"
-brew install node n yarn go docker
-
-echo "Installing brew casks"
-brew cask install visual-studio-code mysqlworkbench spotify eloston-chromium
-
-# Github ssh key
-
-echo "Do you want to generate a ssh key and use it for Github (y/n)?"
-read answer
-
-if [ "$answer" != "${answer#[Yy]}" ] ;then
-    echo "Generating RSA key"
-    ssh-keygen -t rsa -b 4096 -f ~/.ssh/gitub_rsa
-
-    echo "Setting github.com IdentitiyFile"
-    echo "Host github.com" >> ~/.ssh/config
-    echo "    IdentityFile ~/.ssh/github_rsa" >> ~/.ssh/config
+if [ "$EUID" -eq 0 ]; then
+    log "Do not run this script as sudo! (~/ used)" 1
+    exit
 fi
 
-echo "Installing oh-my-zsh"
+log "Setup has started..."
+
+#################### MacOS modifications ####################
+
+log "Disabling unidentified developer warning"
+sudo spctl --master-disable
+
+#################### Package management ####################
+
+log "Installing brew package manager"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+
+log "Installing brew packages"
+brew install node n yarn go docker tmux
+
+log "Installing brew casks"
+brew cask install visual-studio-code mysqlworkbench spotify eloston-chromium
+
+#################### Github SSH key generation ####################
+
+log "Do you want to generate a ssh key and use it for Github (y/n)?"
+read sshkeyanswer
+
+if [ "$sshkeyanswer" != "${sshkeyanswer#[Yy]}" ]; then
+    log "Generating RSA key"
+    ssh-keygen -t rsa -b 4096 -f ~/.ssh/gitub_rsa
+
+    log "Setting github.com IdentitiyFile"
+    echo "Host github.com" >> ~/.ssh/config
+    echo "    IdentityFile ~/.ssh/github_rsa" >> ~/.ssh/config
+else
+    log "Skipping..."
+fi
+
+#################### Terminal configuration ####################
+
+log "Installing oh-my-zsh"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
-echo "Configuring .zshrc"
+log "Configuring ~/.zshrc"
 
 # Delete default oh-my-zsh config
 rm ~/.zshrc
+
+# Spawn tmux
+echo "if [ \"$TMUX\" = \"\" ]; then tmux; fi" >> ~/.zshrc
 
 # oh-my-zsh configuration
 echo "plugins=(git colored-man-pages colorize pip python brew osx zsh-syntax-highlighting zsh-autosuggestions)" >> ~/.zshrc
@@ -43,9 +72,11 @@ echo "ZSH_THEME=apple" >> ~/.zshrc
 # Aliases
 echo "alias p=pwd" >> ~/.zshrc
 echo "alias c=clear" >> ~/.zshrc
-echo "alias l=ls -l" >> ~/.zshrc
+echo "alias l=\"ls -l\"" >> ~/.zshrc
 echo "alias d=docker" >> ~/.zshrc
-echo "alias dps=docker ps" >> ~/.zshrc
-echo "alias dev=cd ~/Documents/Git/" >> ~/.zshrc
+echo "alias dps=\"docker ps\"" >> ~/.zshrc
+echo "alias dev=\"cd ~/Documents/Git/\"" >> ~/.zshrc
 
-echo "Complete!"
+#################### Cleanup / complete ####################
+
+log "Complete!"

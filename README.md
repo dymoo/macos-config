@@ -5,6 +5,7 @@ Dylan's MacOS config.
 * Disables unidentified developer warning
 
 ## Installs
+* brew
 * eloston-chromium (ungoogled-chromium, Chromium based browser for privacy)
 * visual-studio-code
 * mysqlworkbench
@@ -15,11 +16,13 @@ Dylan's MacOS config.
 * go
 * docker
 * oh-my-zsh
+* tmux
 
 ## Configures
 * oh-my-zsh (apple theme)
 * Sets common terminal aliases
-* Generates ssh key for Github
+* Generates ssh key for Github (optional)
+* tmux to start
 
 # How to run?
 paste
