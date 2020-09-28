@@ -70,6 +70,8 @@ echo "plugins=(git colored-man-pages colorize pip python brew osx zsh-syntax-hig
 echo "ZSH_THEME=apple" >> ~/.zshrc
 
 # Aliases
+echo "alias python=python3" >> ~/.zshrc
+echo "alias pip=pip3" >> ~/.zshrc
 echo "alias p=pwd" >> ~/.zshrc
 echo "alias c=clear" >> ~/.zshrc
 echo "alias l=\"ls -l\"" >> ~/.zshrc
