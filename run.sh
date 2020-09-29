@@ -34,7 +34,7 @@ log "Installing brew packages"
 brew install node n yarn go docker tmux
 
 log "Installing brew casks"
-brew cask install visual-studio-code mysqlworkbench spotify eloston-chromium
+brew cask install visual-studio-code mysqlworkbench spotify eloston-chromium transmission
 
 #################### Github SSH key generation ####################
 
@@ -43,11 +43,16 @@ read sshkeyanswer
 
 if [ "$sshkeyanswer" != "${sshkeyanswer#[Yy]}" ]; then
     log "Generating RSA key"
-    ssh-keygen -t rsa -b 4096 -f ~/.ssh/gitub_rsa
+    ssh-keygen -t rsa -b 4096 -f ~/.ssh/github_rsa
 
     log "Setting github.com IdentitiyFile"
     echo "Host github.com" >> ~/.ssh/config
     echo "    IdentityFile ~/.ssh/github_rsa" >> ~/.ssh/config
+
+    log "Copy your public RSA key"
+    cat ~/.ssh/github_rsa.pub
+    log "Press any key to continue..."
+    read
 else
     log "Skipping..."
 fi
@@ -72,6 +77,7 @@ echo "ZSH_THEME=apple" >> ~/.zshrc
 # Aliases
 echo "alias python=python3" >> ~/.zshrc
 echo "alias pip=pip3" >> ~/.zshrc
+echo "alias v=vim" >> ~/.zshrc
 echo "alias p=pwd" >> ~/.zshrc
 echo "alias c=clear" >> ~/.zshrc
 echo "alias l=\"ls -l\"" >> ~/.zshrc
