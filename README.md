@@ -17,12 +17,14 @@ Dylan's MacOS config.
 * docker
 * oh-my-zsh
 * tmux
+* mactex-no-gui
 
 ## Configures
 * oh-my-zsh (apple theme)
 * Sets common terminal aliases
 * Generates ssh key for Github (optional)
 * tmux to start
+* LaTeX
 
 # How to run?
 paste
