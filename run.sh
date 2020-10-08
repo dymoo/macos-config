@@ -31,10 +31,15 @@ log "Installing brew package manager"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
 log "Installing brew packages"
-brew install node n yarn go docker tmux
+brew install node n yarn go docker tmux mactex-no-gui
 
 log "Installing brew casks"
 brew cask install visual-studio-code mysqlworkbench spotify eloston-chromium transmission
+
+#################### LaTeX setup ####################
+
+sudo tlmgr update --self
+sudo tlmgr update --all
 
 #################### Github SSH key generation ####################
 
