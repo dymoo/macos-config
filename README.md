@@ -8,16 +8,23 @@ Dylan's MacOS config.
 * brew
 * eloston-chromium (ungoogled-chromium, Chromium based browser for privacy)
 * visual-studio-code
-* mysqlworkbench
+* java 8
+* dbeaver
 * spotify
 * node
 * n (node version manager)
 * yarn
 * go
 * docker
+* helm
 * oh-my-zsh
 * tmux
 * mactex-no-gui
+* pytorch
+* tensorflow
+* nodemon
+* ts-node
+* typescript
 
 ## Configures
 * oh-my-zsh (apple theme)

@@ -31,10 +31,16 @@ log "Installing brew package manager"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
 log "Installing brew packages"
-brew install node n yarn go docker tmux mactex-no-gui
+brew install node n yarn go docker tmux mactex-no-gui helm
 
 log "Installing brew casks"
-brew cask install visual-studio-code mysqlworkbench spotify eloston-chromium transmission
+brew cask install visual-studio-code dbeaver-community spotify eloston-chromium transmission adoptopenjdk
+
+log "Installing python pagages"
+pip3 install torch torchvision torchaudio tensorflow
+
+log "Installing node packages"
+yarn global add nodemon ts-node
 
 #################### LaTeX setup ####################
 
